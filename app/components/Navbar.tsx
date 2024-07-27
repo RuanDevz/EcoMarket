@@ -46,16 +46,6 @@ export default function Navbar() {
             </div>
           ))}
         </nav>
-
-        <nav className="flex gap-10 text-lg font-semibold text-gray-600">
-          <Link href="/Login" className="transition duration-100 hover:text-primary">
-            Login
-          </Link>
-          <Link href="/Register" className="transition duration-100 hover:text-primary">
-            Register
-          </Link>
-        </nav>
-
         <div className="flex divide-x border-r sm:border-l">
           <Button
             variant={"outline"}
