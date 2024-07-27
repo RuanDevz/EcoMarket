@@ -36,14 +36,14 @@ export default function ShoppingCartModal() {
     <Sheet open={shouldDisplayCart} onOpenChange={() => handleCartClick()}>
       <SheetContent className="sm:max-w-lg w-[90vw]">
         <SheetHeader>
-          <SheetTitle>Shopping Cart</SheetTitle>
+          <SheetTitle>Carrinho de compras</SheetTitle>
         </SheetHeader>
 
         <div className="h-full flex flex-col justify-between">
           <div className="mt-8 flex-1 overflow-y-auto">
             <ul className="-my-6 divide-y divide-gray-200">
               {cartCount === 0 ? (
-                <h1 className="py-6">You dont have any items</h1>
+                <h1 className="py-6">Você não tem nenhum item</h1>
               ) : (
                 <>
                   {Object.values(cartDetails ?? {}).map((entry) => (
@@ -69,7 +69,7 @@ export default function ShoppingCartModal() {
                         </div>
 
                         <div className="flex flex-1 items-end justify-between text-sm">
-                          <p className="text-gray-500">QTY: {entry.quantity}</p>
+                          <p className="text-gray-500">Quantidade: {entry.quantity}</p>
 
                           <div className="flex">
                             <button
@@ -77,7 +77,7 @@ export default function ShoppingCartModal() {
                               onClick={() => removeItem(entry.id)}
                               className="font-medium text-primary hover:text-primary/80"
                             >
-                              Remove
+                              Remover
                             </button>
                           </div>
                         </div>
@@ -95,23 +95,23 @@ export default function ShoppingCartModal() {
               <p>${totalPrice}</p>
             </div>
             <p className="mt-0.5 text-sm text-gray-500">
-              Shipping and taxes are calculated at checkout.
+              Frete e impostos são calculados na finalização da compra.
             </p>
 
             <div className="mt-6">
               <Button onClick={handleCheckoutClick} className="w-full">
-                Checkout
+                Finalizar compra
               </Button>
             </div>
 
             <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
               <p>
-                OR{" "}
+                OU{" "}
                 <button
                   onClick={() => handleCartClick()}
                   className=" font-medium text-primary hover:text-primary/80"
                 >
-                  Continue Shopping
+                  Continue na Loja
                 </button>
               </p>
             </div>

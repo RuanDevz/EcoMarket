@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Star, Truck } from "lucide-react";
 
 async function getData(slug: string) {
-  const query = `*[_type == "product" && slug.current == "${slug}"][0] {
+  const query: any = `*[_type == "product" && slug.current == "${slug}"][0] {
         _id,
           images,
           price,
@@ -18,9 +18,9 @@ async function getData(slug: string) {
           price_id
       }`;
 
-  const data = await client.fetch(query);
+      const data = await client.fetch(query)
 
-  return data;
+  return data as any
 }
 
 export const dynamic = "force-dynamic";
@@ -55,33 +55,33 @@ export default async function ProductPge({
               </Button>
 
               <span className="text-sm text-gray-500 transition duration-100">
-                56 Ratings
+                56 Avaliações
               </span>
             </div>
 
             <div className="mb-4">
               <div className="flex items-end gap-2">
                 <span className="text-xl font-bold text-gray-800 md:text-2xl">
-                  ${data.price}
+                  R$ {data.price},00
                 </span>
                 <span className="mb-0.5 text-red-500 line-through">
-                  ${data.price + 30}
+                  R$ {data.price + 30},00
                 </span>
               </div>
 
               <span className="text-sm text-gray-500">
-                Incl. Vat plus shipping
+                Incl. Todos os custos de envio
               </span>
             </div>
 
             <div className="mb-6 flex items-center gap-2 text-gray-500">
               <Truck className="w-6 h-6" />
-              <span className="text-sm">2-4 Day Shipping</span>
+              <span className="text-sm">2-4 Dias | Estimativa de entrega</span>
             </div>
 
             <div className="flex gap-2.5">
               <AddToBag
-                currency="USD"
+                currency="brl"
                 description={data.description}
                 image={data.images[0]}
                 name={data.name}
@@ -90,7 +90,7 @@ export default async function ProductPge({
                 price_id={data.price_id}
               />
               <CheckoutNow
-                currency="USD"
+                currency="brl"
                 description={data.description}
                 image={data.images[0]}
                 name={data.name}

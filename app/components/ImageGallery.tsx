@@ -7,6 +7,7 @@ import { useState } from "react";
 interface iAppProps {
   images: any;
 }
+//images
 
 export default function ImageGallery({ images }: iAppProps) {
   const [bigImage, setBigImage] = useState(images[0]);
@@ -41,7 +42,7 @@ export default function ImageGallery({ images }: iAppProps) {
         />
 
         <span className="absolute left-0 top-0 rounded-br-lg bg-red-500 px-3 py-1.5 text-sm uppercase tracking-wider text-white">
-          Sale
+          Promoção
         </span>
       </div>
     </div>
