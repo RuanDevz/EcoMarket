@@ -18,7 +18,7 @@ export default function Navbar() {
   const { handleCartClick } = useShoppingCart();
   return (
     <header className="mb-8 border-b">
-      <div className="flex items-center justify-between mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl">
+      <div className="flex items-center justify-between mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-full lg:mx-48">
         <Link href="/">
           <h1 className="text-2xl md:text-4xl font-bold">
             Eco<span className="text-primary">Market</span>
@@ -45,6 +45,15 @@ export default function Navbar() {
               )}
             </div>
           ))}
+        </nav>
+
+        <nav className="flex gap-10 text-lg font-semibold text-gray-600">
+          <Link href="/Login" className="transition duration-100 hover:text-primary">
+            Login
+          </Link>
+          <Link href="/Register" className="transition duration-100 hover:text-primary">
+            Register
+          </Link>
         </nav>
 
         <div className="flex divide-x border-r sm:border-l">
