@@ -7,42 +7,30 @@ import { Button } from "@/components/ui/button";
 import { Star, Truck } from "lucide-react";
 
 async function getData(slug: string) {
-  const query = `*[_type == "product" && slug.current == "${slug}"][0] {
-    _id,
-    images,
-    price,
-    name,
-    description,
-    "slug": slug.current,
-    "categoryName": category->name,
-    price_id
-  }`;
+  const query: any = `*[_type == "product" && slug.current == "${slug}"][0] {
+        _id,
+          images,
+          price,
+          name,
+          description,
+          "slug": slug.current,
+          "categoryName": category->name,
+          price_id
+      }`;
 
-  const data = await client.fetch(query);
-  return data ? (data as fullProduct) : null;
+      const data = await client.fetch(query)
+
+  return data as any
 }
 
-export default async function ProductPage({
+export const dynamic = "force-dynamic";
+
+export default async function ProductPge({
   params,
 }: {
   params: { slug: string };
 }) {
-  const data: fullProduct | null = await getData(params.slug);
-
-  if (!data) {
-    return (
-      <div className="bg-white">
-        <div className="mx-auto max-w-screen-xl px-4 md:px-8">
-          <div className="py-16 text-center">
-            <h2 className="text-2xl font-bold text-gray-800 lg:text-3xl">
-              Produto não encontrado
-            </h2>
-            <p className="mt-4 text-gray-500">O produto que você está procurando não existe.</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const data: fullProduct = await getData(params.slug);
 
   return (
     <div className="bg-white">
