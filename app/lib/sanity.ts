@@ -1,10 +1,11 @@
-import { createClient } from "next-sanity";
-import imageUrlBuilder from "@sanity/image-url";
+import { createClient } from '@sanity/client';
+import imageUrlBuilder from '@sanity/image-url';
 
+// Crie o cliente Sanity
 export const client = createClient({
-  projectId: "pz9ehg2k",
-  dataset: "production",
-  apiVersion: "2022-03-25",
+  projectId: '5guynj58',
+  dataset: 'production',
+  apiVersion: '2022-03-25',
   useCdn: true,
 });
 

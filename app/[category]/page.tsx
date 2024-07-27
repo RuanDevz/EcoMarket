@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { simplifiedProduct } from "../interface";
-import { client } from "../lib/sanity";
+import { client, urlFor } from "../lib/sanity";
 import Image from "next/image";
 
-async function getData(cateogry: string) {
-  const query = `*[_type == "product" && category->name == "${cateogry}"] {
+async function getData(category: string) {
+  const query = `*[_type == "product" && category->name == "${category}"] {
         _id,
           "imageUrl": images[0].asset->url,
           price,
@@ -41,7 +41,7 @@ export default async function CategoryPage({
             <div key={product._id} className="group relative">
               <div className="aspect-square w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-80">
                 <Image
-                  src={product.imageUrl}
+                  src={urlFor(product.imageUrl).url()}
                   alt="Product image"
                   className="w-full h-full object-cover object-center lg:h-full lg:w-full"
                   width={300}
